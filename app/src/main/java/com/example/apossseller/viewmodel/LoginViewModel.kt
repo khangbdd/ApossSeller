@@ -1,5 +1,6 @@
 package com.example.apossseller.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.apossseller.model.dto.LoginDTO

@@ -15,6 +15,7 @@ import com.example.apossseller.R
 import com.example.apossseller.databinding.FragmentLoginBinding
 import com.example.apossseller.model.entity.Account
 import com.example.apossseller.repository.database.AccountDatabase
+import com.example.apossseller.uicontroler.activity.MainActivity
 import com.example.apossseller.uicontroler.dialog.LoadingDialog
 import com.example.apossseller.utils.LoginStatus
 import com.example.apossseller.viewmodel.LoginViewModel
@@ -33,9 +34,11 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container,false)
         binding.lifecycleOwner = this
+        binding.viewModel = viewModel
         dialog = LoadingDialog(this.requireActivity())
         onLoginStateChange()
         setCheckingEmail()
+        toastMessageChange()
         setCheckingPassword()
         return binding.root
     }
@@ -58,11 +61,12 @@ class LoginFragment : Fragment() {
                                 viewModel.tokenDTO!!.tokenType,
                                 viewModel.tokenDTO!!.refreshToken
                             )
-                        AccountDatabase.getInstance(this.requireContext()).accountDao.insertAccount(
-                            account
-                        )
-                        Log.d("Login success", account.toString())
-                        //startActivity(Intent(this.context, MainActivity::class.java))
+                        Log.d("login2" , account.toString())
+//                        AccountDatabase.getInstance(this.requireContext()).accountDao.insertAccount(
+//                            account
+//                        )
+
+                        startActivity(Intent(this.context, MainActivity::class.java))
                     } else {
                         Toast.makeText(this.context, "An error occur!", Toast.LENGTH_SHORT).show()
                     }

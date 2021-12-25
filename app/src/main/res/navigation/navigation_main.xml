@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_main"
+    app:startDestination="@id/productGeneralFragment">
+
+    <fragment
+        android:id="@+id/productGeneralFragment"
+        android:name="com.example.apossseller.uicontroler.fragment.ProductGeneralFragment"
+        android:label="fragment_product_general"
+        tools:layout="@layout/fragment_product_general" />
+    <fragment
+        android:id="@+id/orderGeneralFragment"
+        android:name="com.example.apossseller.uicontroler.fragment.OrderGeneralFragment"
+        android:label="fragment_order_general"
+        tools:layout="@layout/fragment_order_general" />
+</navigation>

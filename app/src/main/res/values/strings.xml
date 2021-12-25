@@ -112,4 +112,5 @@
     <string name="write_your_comment_here">Write your comment here!</string>
     <string name="add_image">Add image</string>
     <string name="set_as_default_address">Set as default address</string>
+    <string name="orderTitle">Orders</string>
 </resources>
