@@ -1,11 +1,12 @@
-package com.example.apossseller
+package com.example.apossseller.uicontroler.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.apossseller.R
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
     }
 }
