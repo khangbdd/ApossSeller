@@ -2,18 +2,33 @@ package com.example.apossseller.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.apossseller.model.dto.LoginDTO
+import com.example.apossseller.model.dto.TokenDTO
+import com.example.apossseller.repository.AuthRepository
+import com.example.apossseller.utils.LoginStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import okhttp3.Dispatcher
 import java.util.regex.Pattern
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(): ViewModel() {
+class LoginViewModel @Inject constructor(
+    val authRepository: AuthRepository
+): ViewModel() {
 
     var email: MutableLiveData<String> = MutableLiveData()
     var password: MutableLiveData<String> = MutableLiveData()
     var passwordErrorMessage: String? = ""
     var emailErrorMessage: String? = ""
     var toastMessage: MutableLiveData<String> = MutableLiveData()
+    var loginStatus: MutableLiveData<LoginStatus> = MutableLiveData()
+    private var viewModelJob = Job()
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+    var tokenDTO: TokenDTO? = null
 
 
     private fun isEmailRightFormat(email: String): Boolean {
@@ -30,12 +45,31 @@ class LoginViewModel @Inject constructor(): ViewModel() {
     fun onLoginClick() {
         if (email.value != null && password.value != null) {
             if (isValidEmail() && isValidPassword()) {
-                //signIn()
+                login()
             } else {
                 toastMessage.value = "Email or password is invalid!"
             }
         } else {
             toastMessage.value = "Email or password is invalid!"
+        }
+    }
+
+    private fun login()
+    {
+        loginStatus.value = LoginStatus.Loading
+        coroutineScope.launch {
+
+            var loginDTO = LoginDTO(email.value!!, password.value!!)
+            var respond = authRepository.authService.login(loginDTO)
+            tokenDTO = respond.body()
+            if (respond.code() == 200)
+            {
+                loginStatus.value = LoginStatus.Success
+                toastMessage.value = "Login success"
+            } else {
+                loginStatus.value = LoginStatus.Wait
+                toastMessage.value = "Wrong email or password!"
+            }
         }
     }
 
