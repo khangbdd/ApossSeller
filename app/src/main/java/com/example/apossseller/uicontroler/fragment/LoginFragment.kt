@@ -36,10 +36,10 @@ class LoginFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         dialog = LoadingDialog(this.requireActivity())
-        onLoginStateChange()
         setCheckingEmail()
         toastMessageChange()
         setCheckingPassword()
+        onLoginStateChange()
         return binding.root
     }
 
@@ -61,11 +61,10 @@ class LoginFragment : Fragment() {
                                 viewModel.tokenDTO!!.tokenType,
                                 viewModel.tokenDTO!!.refreshToken
                             )
+                        Log.d("login2" , "success")
                         Log.d("login2" , account.toString())
-//                        AccountDatabase.getInstance(this.requireContext()).accountDao.insertAccount(
-//                            account
-//                        )
-
+                        AccountDatabase.getInstance(this.requireContext()).accountDao.insertAccount(account)
+                        Log.d("login2" , account.toString())
                         startActivity(Intent(this.context, MainActivity::class.java))
                     } else {
                         Toast.makeText(this.context, "An error occur!", Toast.LENGTH_SHORT).show()

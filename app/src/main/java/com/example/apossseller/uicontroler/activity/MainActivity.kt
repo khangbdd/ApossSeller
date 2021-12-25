@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.lifecycleOwner = this
-        navController = findNavController(R.id.main_fragment)
+        navController = findNavController(R.id.fragmentContainerView2)
         binding.bottomNavigation.setOnItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 

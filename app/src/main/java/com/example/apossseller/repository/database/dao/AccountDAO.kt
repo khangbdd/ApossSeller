@@ -1,14 +1,12 @@
 package com.example.apossseller.repository.database.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.example.apossseller.model.entity.Account
 
 @Dao
 interface AccountDAO {
-    @Insert
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAccount(account: Account)
 
     @Delete
