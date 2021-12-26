@@ -12,4 +12,10 @@ interface AuthService {
     suspend fun login(
         @Body loginDTO: LoginDTO
     ): Response<TokenDTO>
+
+    @POST("auth/access-token")
+    suspend fun getAccessToken(
+        @Body refreshToken: String
+    ): Response<String>
+
 }
