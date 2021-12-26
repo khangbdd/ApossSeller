@@ -3,6 +3,7 @@ package com.example.apossseller.uicontroler.fragment
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.apossseller.R
 import com.example.apossseller.databinding.FragmentOrderBinding
+import com.example.apossseller.uicontroler.activity.MainActivity
 import com.example.apossseller.uicontroler.adapter.OrderAdapter
 import com.example.apossseller.utils.OrderStatus
 import com.example.apossseller.viewmodel.OrderViewModel
@@ -25,6 +27,8 @@ class OrderFragment : Fragment(), OrderAdapter.OrderInterface {
     private val viewModel: OrderViewModel by activityViewModels()
 
     private lateinit var orderAdapter: OrderAdapter
+
+    private var status: String = "Pending"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,6 +37,7 @@ class OrderFragment : Fragment(), OrderAdapter.OrderInterface {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         orderAdapter = OrderAdapter(OrderAdapter.OnClickListener{
+            status = it.getStatusString()
             toOrderDetail(it.id)
             viewModel.setCurrentOrder(it)
         }, this)
@@ -43,10 +48,27 @@ class OrderFragment : Fragment(), OrderAdapter.OrderInterface {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        formerLoad(status)
+    }
+
+    fun formerLoad(status: String)
+    {
+        if (status == "Pending")
+        {
+            viewModel.loadPendingOrder()
+        } else if (status == "Confirmed")
+        {
+            viewModel.loadConfirmedOrder()
+        } else if (status == "Delivering") {
+            viewModel.loadDeliveringOrder()
+        }
+    }
 
     private fun setBackPress(){
         binding.back.setOnClickListener {
-            requireActivity().onBackPressed()
+            startActivity(Intent(this.context, MainActivity::class.java))
         }
     }
     private fun toOrderDetail(orderId: Long){

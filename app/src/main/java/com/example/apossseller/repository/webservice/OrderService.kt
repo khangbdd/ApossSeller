@@ -51,4 +51,22 @@ interface OrderService {
         @Body orderStatus: OrderStatus,
         @Header("Authorization") accessToken: String,
     ): Response<String>
+
+    @POST("order/order-by-status")
+    suspend fun getAllOrderByStatusSeller(
+        @Body orderStatus: OrderStatus,
+        @Header("Authorization") token: String,
+    ): Response<List<OrderDTO>>
+
+    @POST("order/on-place-order")
+    suspend fun countAllOrderOnPlace(
+        @Header("Authorization") token: String,
+    ): Response<Int>
+
+    @POST("order/cancel-order-seller/{id}")
+    suspend fun cancelOrderSeller(
+        @Path(value = "id") id: Long,
+        @Body cancelReason: String,
+        @Header("Authorization") accessToken: String,
+    ): Response<String>
 }

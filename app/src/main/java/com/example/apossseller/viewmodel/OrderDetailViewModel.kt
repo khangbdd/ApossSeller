@@ -2,6 +2,7 @@ package com.example.apossseller.viewmodel
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,6 +17,7 @@ import com.example.apossseller.repository.AuthRepository
 import com.example.apossseller.repository.OrderRepository
 import com.example.apossseller.repository.database.AccountDatabase
 import com.example.apossseller.utils.LoadingStatus
+import com.example.apossseller.utils.OrderStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
@@ -37,6 +39,7 @@ class OrderDetailViewModel @Inject constructor(
 
     private var _detailOrder: MutableLiveData<Order> = MutableLiveData()
     val detailOrder: LiveData<Order> get() = _detailOrder
+
 
     private var _orderDeliveringState: MutableLiveData<ArrayList<OrderDeliveringState>> =
         MutableLiveData()
@@ -85,6 +88,37 @@ class OrderDetailViewModel @Inject constructor(
                     loadDetailOrderById(id)
                 }
             } else {
+                _loadStatus.value = LoadingStatus.Fail
+            }
+        }
+    }
+
+    fun changeStatus(orderStatus: OrderStatus, id: Long)
+    {
+        val account = AccountDatabase.getInstance(context).accountDao.getAccount()
+        val token  = TokenDTO(accessToken = account!!.accessToken, account.tokenType, account.refreshToken)
+        _loadStatus.value = LoadingStatus.Loading
+        coroutineScope.launch {
+            var respond = orderRepository.orderService.changeOrderStatus(id, orderStatus, token.getFullAccessToken())
+            if (respond.code() == 200)
+            {
+                _loadStatus.value = LoadingStatus.Success
+                loadDetailOrderById(id)
+                Toast.makeText(context, "Change status success", Toast.LENGTH_SHORT).show()
+            }
+            if (respond.code() == 401)
+            {
+                val accessTokenResponse =
+                    authRepository.getAccessToken(token.refreshToken)
+                if (accessTokenResponse.code() == 200) {
+                    token.accessToken = accessTokenResponse.body()!!
+                    AccountDatabase.getInstance(context).accountDao.updateAccessToken(
+                        token.accessToken
+                    )
+                    changeStatus(orderStatus, id)
+                }
+            }
+            else {
                 _loadStatus.value = LoadingStatus.Fail
             }
         }

@@ -63,47 +63,6 @@
                             android:textSize="30sp"
                             android:textStyle="bold" />
 
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="27dp"
-                            android:layout_height="27dp"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true">
-
-                            <ImageView
-                                android:id="@+id/cart"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginEnd="20dp"
-                                android:contentDescription="@string/image"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/ic_cart_white"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintStart_toStartOf="parent" />
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="10dp"
-                                android:layout_height="10dp"
-                                android:background="@color/red"
-                                android:backgroundTint="@color/red"
-                                app:cardCornerRadius="10dp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:autoSizeMinTextSize="7sp"
-                                    android:gravity="center"
-                                    android:text="@string/defaultCartNumber"
-                                    android:textColor="@color/white"
-                                    android:textSize="7sp"
-                                    tools:ignore="SmallSp,SpUsage" />
-
-                            </androidx.cardview.widget.CardView>
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
                     </RelativeLayout>
                 </LinearLayout>
             </androidx.appcompat.widget.Toolbar>
@@ -265,14 +224,14 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:layout_marginTop="15dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
                             android:layout_marginEnd="5dp"
                             android:layout_toStartOf="@+id/statusIcon"
                             android:layout_toEndOf="@+id/status"
                             android:gravity="end"
-                            android:text="@{viewModel.detailOrder.getStatusString()}"
+                            android:text="@{viewModel.detailOrder.statusString}"
                             android:textColor="@color/dark_pray"
                             android:textSize="16sp" />
 
@@ -321,12 +280,12 @@
             <androidx.appcompat.widget.AppCompatButton
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginHorizontal="10dp"
-                android:id="@+id/ratingNow"
+                android:id="@+id/update"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 android:layout_marginVertical="10dp"
                 android:background="@drawable/bg_rating_now_button"
-                android:text="@string/rating_now"
+                android:text="Update status"
                 android:textAllCaps="true"
                 android:textColor="@color/active_button"
                 android:textSize="16sp"

@@ -34,7 +34,7 @@ class OrderAdapter(
 
 
         private fun setUpRatingButton(order: Order) {
-            if (order.status == OrderStatus.Success) {
+            if (order.status == OrderStatus.Pending) {
                 binding.confirm.visibility = View.VISIBLE
             } else {
                 binding.confirm.visibility = View.GONE

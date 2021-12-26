@@ -31,7 +31,7 @@ class CancelOrderConfirmFragment : Fragment() {
     }
     private fun setContinueButton(){
         binding.continueShopping.setOnClickListener {
-            startActivity(Intent(this.context, MainActivity::class.java))
+            findNavController().navigate(CancelOrderConfirmFragmentDirections.actionCancelOrderConfirmFragmentToOrderFragment())
         }
     }
 

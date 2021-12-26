@@ -52,6 +52,7 @@ class OrderViewModel @Inject constructor(
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
+
     init {
         loadPendingOrder()
     }
@@ -65,6 +66,7 @@ class OrderViewModel @Inject constructor(
             }
         }
     }
+
 
 
     fun setCurrentOrders(currentOrder: ArrayList<Order>){
@@ -97,7 +99,7 @@ class OrderViewModel @Inject constructor(
         val token  = TokenDTO(accessToken = account!!.accessToken, account.tokenType, account.refreshToken)
         _loadStatus.value = LoadingStatus.Loading
         coroutineScope.launch {
-            var respond = orderRepository.orderService.getAllOrderByStatus(OrderStatus.Pending, token.getFullAccessToken())
+            var respond = orderRepository.orderService.getAllOrderByStatusSeller(OrderStatus.Pending, token.getFullAccessToken())
             if (respond.code() == 200)
             {
                 val listOrderDTO = respond.body()
@@ -192,7 +194,7 @@ class OrderViewModel @Inject constructor(
         val token  = TokenDTO(accessToken = account!!.accessToken, account.tokenType, account.refreshToken)
         _loadStatus.value = LoadingStatus.Loading
         coroutineScope.launch {
-            var respond = orderRepository.orderService.getAllOrderByStatus(OrderStatus.Confirmed, token.getFullAccessToken())
+            var respond = orderRepository.orderService.getAllOrderByStatusSeller(OrderStatus.Confirmed, token.getFullAccessToken())
             if (respond.code() == 200)
             {
                 val listOrderDTO = respond.body()
@@ -228,7 +230,7 @@ class OrderViewModel @Inject constructor(
         val token  = TokenDTO(accessToken = account!!.accessToken, account.tokenType, account.refreshToken)
         _loadStatus.value = LoadingStatus.Loading
         coroutineScope.launch {
-            var respond = orderRepository.orderService.getAllOrderByStatus(OrderStatus.Delivering, token.getFullAccessToken())
+            var respond = orderRepository.orderService.getAllOrderByStatusSeller(OrderStatus.Delivering, token.getFullAccessToken())
             if (respond.code() == 200)
             {
                 val listOrderDTO = respond.body()
@@ -264,7 +266,7 @@ class OrderViewModel @Inject constructor(
         val token  = TokenDTO(accessToken = account!!.accessToken, account.tokenType, account.refreshToken)
         _loadStatus.value = LoadingStatus.Loading
         coroutineScope.launch {
-            var respond = orderRepository.orderService.getAllOrderByStatus(OrderStatus.Success, token.getFullAccessToken())
+            var respond = orderRepository.orderService.getAllOrderByStatusSeller(OrderStatus.Success, token.getFullAccessToken())
             if (respond.code() == 200)
             {
                 val listOrderDTO = respond.body()
@@ -300,7 +302,7 @@ class OrderViewModel @Inject constructor(
         val token  = TokenDTO(accessToken = account!!.accessToken, account.tokenType, account.refreshToken)
         _loadStatus.value = LoadingStatus.Loading
         coroutineScope.launch {
-            var respond = orderRepository.orderService.getAllOrderByStatus(OrderStatus.Cancel, token.getFullAccessToken())
+            var respond = orderRepository.orderService.getAllOrderByStatusSeller(OrderStatus.Cancel, token.getFullAccessToken())
             if (respond.code() == 200)
             {
                 val listOrderDTO = respond.body()

@@ -23,7 +23,7 @@ import com.example.apossseller.viewmodel.OrderViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DetailOrderFragment : Fragment() {
+class DetailOrderFragment : Fragment(), SelectStatusDialog.SelectStatusInterface {
 
     private lateinit var binding: FragmentDetailOrderBinding
     private val viewModelOrders: OrderViewModel by activityViewModels()
@@ -33,6 +33,8 @@ class DetailOrderFragment : Fragment() {
     private val args: DetailOrderFragmentArgs by navArgs()
 
     private lateinit var orderDeliveringStateAdapter: OrderDeliveringStateAdapter
+    lateinit var selectStatusDialog: SelectStatusDialog
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,9 +57,11 @@ class DetailOrderFragment : Fragment() {
         binding.billingItems.adapter = orderDetailBillingItem
         orderDeliveringStateAdapter = OrderDeliveringStateAdapter()
         binding.deliveringState.adapter = orderDeliveringStateAdapter
+        selectStatusDialog = SelectStatusDialog(requireActivity(), this, viewModelOrders.currentOrder!!.status.toString())
         setShowButton()
         setBackPress()
         setCancelOrder()
+        setUpdateClick()
         return binding.root
     }
 
@@ -72,13 +76,20 @@ class DetailOrderFragment : Fragment() {
         }
     }
 
+    private fun setUpdateClick()
+    {
+        binding.update.setOnClickListener {
+            selectStatusDialog.startLoading()
+        }
+    }
+
 
     private fun setShowButton(){
-        if(viewModel.detailOrder.value!!.status == OrderStatus.Success){
-            binding.ratingNow.visibility = View.VISIBLE
-        }else{
-            binding.ratingNow.visibility = View.GONE
-        }
+//        if(viewModel.detailOrder.value!!.status != OrderStatus.Success){
+//            binding.update.visibility = View.VISIBLE
+//        }else{
+//            binding.update.visibility = View.GONE
+//        }
         if(viewModel.detailOrder.value!!.status == OrderStatus.Pending || viewModel.detailOrder.value!!.status == OrderStatus.Confirmed){
             binding.cancel.visibility = View.VISIBLE
                 //binding.editAddress.visibility = View.VISIBLE
@@ -87,6 +98,41 @@ class DetailOrderFragment : Fragment() {
             //binding.editAddress.visibility = View.GONE
         }
 
+    }
+
+    override fun onSaveClick(status: String) {
+        selectStatusDialog.dismissDialog()
+        if (status == "Pending")
+        {
+            viewModel.changeStatus(OrderStatus.Pending, viewModelOrders.currentOrder!!.id);
+            formerLoad(viewModelOrders.currentOrder!!.getStatusString())
+        } else if (status == "Confirmed")
+        {
+            viewModel.changeStatus(OrderStatus.Confirmed, viewModelOrders.currentOrder!!.id);
+            formerLoad(viewModelOrders.currentOrder!!.getStatusString())
+        } else if (status == "Delivering")
+        {
+            viewModel.changeStatus(OrderStatus.Delivering, viewModelOrders.currentOrder!!.id);
+            formerLoad(viewModelOrders.currentOrder!!.getStatusString())
+        }else if (status == "Cancel")
+        {
+            binding.cancel.setOnClickListener {
+                findNavController().navigate(DetailOrderFragmentDirections.actionDetailOrderFragmentToCancelOrderFragment(viewModel.detailOrder.value!!.id))
+            }
+        }
+    }
+
+    fun formerLoad(status: String)
+    {
+        if (status == "Pending")
+        {
+            viewModelOrders.loadPendingOrder()
+        } else if (status == "Confirmed")
+        {
+            viewModelOrders.loadConfirmedOrder()
+        } else if (status == "Delivering") {
+            viewModelOrders.loadDeliveringOrder()
+        }
     }
 
 
