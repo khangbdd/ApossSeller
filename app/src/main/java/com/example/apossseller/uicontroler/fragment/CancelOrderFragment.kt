@@ -10,8 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.aposs_buyer.uicontroler.fragment.CancelOrderFragmentArgs
-import com.example.aposs_buyer.uicontroler.fragment.CancelOrderFragmentDirections
 import com.example.apossseller.R
 import com.example.apossseller.databinding.FragmentCancelOrderBinding
 import com.example.apossseller.viewmodel.CancelOrderViewModel

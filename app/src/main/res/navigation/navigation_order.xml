@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/orderFragment"
-        android:name="com.example.aposs_buyer.uicontroler.fragment.OrderFragment"
+        android:name="com.example.apossseller.uicontroler.fragment.OrderFragment"
         android:label="fragment_order"
         tools:layout="@layout/fragment_order" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailOrderFragment"
-        android:name="com.example.aposs_buyer.uicontroler.fragment.DetailOrderFragment"
+        android:name="com.example.apossseller.uicontroler.fragment.DetailOrderFragment"
         android:label="fragment_detail_order"
         tools:layout="@layout/fragment_detail_order" >
         <argument
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/cancelOrderFragment"
-        android:name="com.example.aposs_buyer.uicontroler.fragment.CancelOrderFragment"
+        android:name="com.example.apossseller.uicontroler.fragment.CancelOrderFragment"
         android:label="fragment_cancel_order"
         tools:layout="@layout/fragment_cancel_order" >
         <argument
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/cancelOrderConfirmFragment"
-        android:name="com.example.aposs_buyer.uicontroler.fragment.CancelOrderConfirmFragment"
+        android:name="com.example.apossseller.uicontroler.fragment.CancelOrderConfirmFragment"
         android:label="fragment_cancel_order_confirm"
         tools:layout="@layout/fragment_cancel_order_confirm" >
         <action

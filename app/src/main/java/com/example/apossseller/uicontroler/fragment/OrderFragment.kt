@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.aposs_buyer.uicontroler.fragment.OrderFragmentDirections
 import com.example.apossseller.R
 import com.example.apossseller.databinding.FragmentOrderBinding
 import com.example.apossseller.uicontroler.adapter.OrderAdapter

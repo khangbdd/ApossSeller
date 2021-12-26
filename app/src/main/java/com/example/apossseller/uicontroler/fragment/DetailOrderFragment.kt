@@ -13,8 +13,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.aposs_buyer.uicontroler.fragment.DetailOrderFragmentArgs
-import com.example.aposs_buyer.uicontroler.fragment.DetailOrderFragmentDirections
 import com.example.apossseller.R
 import com.example.apossseller.databinding.FragmentDetailOrderBinding
 import com.example.apossseller.uicontroler.adapter.BillingItemsAdapter
