@@ -224,6 +224,7 @@
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/statusString"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
@@ -231,13 +232,11 @@
                             android:layout_toStartOf="@+id/statusIcon"
                             android:layout_toEndOf="@+id/status"
                             android:gravity="end"
-                            android:text="@{viewModel.detailOrder.statusString}"
                             android:textColor="@color/dark_pray"
                             android:textSize="16sp" />
 
                         <ImageView
                             android:id="@+id/statusIcon"
-                            statusIconData="@{viewModel.detailOrder.status}"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_alignParentEnd="true"

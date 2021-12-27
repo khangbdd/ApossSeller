@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.apossseller.R
@@ -58,11 +59,32 @@ class DetailOrderFragment : Fragment(), SelectStatusDialog.SelectStatusInterface
         orderDeliveringStateAdapter = OrderDeliveringStateAdapter()
         binding.deliveringState.adapter = orderDeliveringStateAdapter
         selectStatusDialog = SelectStatusDialog(requireActivity(), this, viewModelOrders.currentOrder!!.status.toString())
+        setStatusValue(viewModelOrders.currentOrder!!.status)
         setShowButton()
         setBackPress()
         setCancelOrder()
         setUpdateClick()
         return binding.root
+    }
+
+    private fun setStatusValue(orderStatus: OrderStatus)
+    {
+        binding.statusString.text = orderStatus.toString()
+        if (orderStatus == OrderStatus.Pending)
+        {
+            binding.statusIcon.setImageResource(R.drawable.ic_order_pending)
+        } else if (orderStatus == OrderStatus.Confirmed)
+        {
+            binding.statusIcon.setImageResource(R.drawable.ic_order_confirm)
+        } else if (orderStatus == OrderStatus.Delivering)
+        {
+            binding.statusIcon.setImageResource(R.drawable.ic_order_delivering)
+        }else if (orderStatus == OrderStatus.Cancel)
+        {
+            binding.statusIcon.setImageResource(R.drawable.ic_order_cancel)
+        } else {
+            binding.statusIcon.setImageResource(R.drawable.ic_order_pass)
+        }
     }
 
     private fun setBackPress(){
@@ -85,11 +107,11 @@ class DetailOrderFragment : Fragment(), SelectStatusDialog.SelectStatusInterface
 
 
     private fun setShowButton(){
-//        if(viewModel.detailOrder.value!!.status != OrderStatus.Success){
-//            binding.update.visibility = View.VISIBLE
-//        }else{
-//            binding.update.visibility = View.GONE
-//        }
+        if(viewModel.detailOrder.value!!.status == OrderStatus.Success){
+            binding.update.visibility = View.GONE
+        }else{
+            binding.update.visibility = View.VISIBLE
+        }
         if(viewModel.detailOrder.value!!.status == OrderStatus.Pending || viewModel.detailOrder.value!!.status == OrderStatus.Confirmed){
             binding.cancel.visibility = View.VISIBLE
                 //binding.editAddress.visibility = View.VISIBLE
@@ -102,22 +124,25 @@ class DetailOrderFragment : Fragment(), SelectStatusDialog.SelectStatusInterface
 
     override fun onSaveClick(status: String) {
         selectStatusDialog.dismissDialog()
-        if (status == "Pending")
-        {
-            viewModel.changeStatus(OrderStatus.Pending, viewModelOrders.currentOrder!!.id);
-            formerLoad(viewModelOrders.currentOrder!!.getStatusString())
-        } else if (status == "Confirmed")
-        {
-            viewModel.changeStatus(OrderStatus.Confirmed, viewModelOrders.currentOrder!!.id);
-            formerLoad(viewModelOrders.currentOrder!!.getStatusString())
-        } else if (status == "Delivering")
-        {
-            viewModel.changeStatus(OrderStatus.Delivering, viewModelOrders.currentOrder!!.id);
-            formerLoad(viewModelOrders.currentOrder!!.getStatusString())
-        }else if (status == "Cancel")
-        {
-            binding.cancel.setOnClickListener {
-                findNavController().navigate(DetailOrderFragmentDirections.actionDetailOrderFragmentToCancelOrderFragment(viewModel.detailOrder.value!!.id))
+        if (status != viewModelOrders.currentOrder!!.status.toString()) {
+            if (status == "Pending") {
+                viewModel.changeStatus(OrderStatus.Pending, viewModelOrders.currentOrder!!.id);
+                setStatusValue(OrderStatus.Pending)
+                formerLoad(viewModelOrders.currentOrder!!.getStatusString())
+            } else if (status == "Confirmed") {
+                viewModel.changeStatus(OrderStatus.Confirmed, viewModelOrders.currentOrder!!.id);
+                setStatusValue(OrderStatus.Confirmed)
+                formerLoad(viewModelOrders.currentOrder!!.getStatusString())
+            } else if (status == "Delivering") {
+                viewModel.changeStatus(OrderStatus.Delivering, viewModelOrders.currentOrder!!.id);
+                setStatusValue(OrderStatus.Delivering)
+                formerLoad(viewModelOrders.currentOrder!!.getStatusString())
+            } else if (status == "Cancel") {
+                findNavController().navigate(
+                    DetailOrderFragmentDirections.actionDetailOrderFragmentToCancelOrderFragment(
+                        viewModel.detailOrder.value!!.id
+                    )
+                )
             }
         }
     }
