@@ -93,6 +93,11 @@ class OrderViewModel @Inject constructor(
         }
     }
 
+    fun maptoInt(orderStatus: OrderStatus): Int
+    {
+        return orderStatus.ordinal
+    }
+
     fun loadPendingOrder() {
         clearList()
         val account = AccountDatabase.getInstance(context).accountDao.getAccount()
