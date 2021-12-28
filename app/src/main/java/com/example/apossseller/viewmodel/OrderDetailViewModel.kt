@@ -157,4 +157,9 @@ class OrderDetailViewModel @Inject constructor(
         sample.add(OrderDeliveringState(4, "Orders are being shipped", Date()))
         return sample
     }
+
+    fun maptoInt(orderStatus: OrderStatus): Int
+    {
+        return orderStatus.ordinal
+    }
 }

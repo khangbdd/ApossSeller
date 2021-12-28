@@ -6,6 +6,6 @@ data class TokenDTO(
     var refreshToken: String,
 ){
     fun getFullAccessToken(): String{
-        return "$tokenType Seller $accessToken"
+        return "$tokenType $accessToken"
     }
 }

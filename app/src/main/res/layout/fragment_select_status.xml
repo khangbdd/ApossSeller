@@ -7,7 +7,7 @@
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:background="@drawable/bg_status_dialog"
+        android:background="@color/white"
         tools:context=".uicontroler.fragment.SelectStatusDialog">
 
 <!--        <LinearLayout android:orientation="horizontal"-->

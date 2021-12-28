@@ -32,10 +32,10 @@ interface OrderService {
         @Header("Authorization") token: String,
     ): Response<List<OrderDTO>>
 
-    @POST("order/order-by-id/{id}")
+    @GET("order/order-by-id/{id}")
     suspend fun getOrderById(
         @Header("Authorization") accessToken: String,
-        @Path (value = "id") id: Long
+        @Path ("id") id: Long
     ): Response<OrderDTO>
 
     @POST("order/cancel-order-customer/{id}")
@@ -45,25 +45,25 @@ interface OrderService {
         @Header("Authorization") accessToken: String,
     ): Response<String>
 
-    @POST("order/change-order-status/{id}")
+    @PUT("order/change-order-status/{id}")
     suspend fun changeOrderStatus(
         @Path(value = "id") id: Long,
-        @Body orderStatus: OrderStatus,
+        @Body() status: OrderStatus,
         @Header("Authorization") accessToken: String,
     ): Response<String>
 
-    @POST("order/order-by-status")
+    @GET("order/order-by-status")
     suspend fun getAllOrderByStatusSeller(
-        @Body orderStatus: OrderStatus,
+        @Query("status") status: OrderStatus,
         @Header("Authorization") token: String,
     ): Response<List<OrderDTO>>
 
-    @POST("order/on-place-order")
+    @GET("order/on-place-order")
     suspend fun countAllOrderOnPlace(
         @Header("Authorization") token: String,
     ): Response<Int>
 
-    @POST("order/cancel-order-seller/{id}")
+    @PUT("order/cancel-order-seller/{id}")
     suspend fun cancelOrderSeller(
         @Path(value = "id") id: Long,
         @Body cancelReason: String,
