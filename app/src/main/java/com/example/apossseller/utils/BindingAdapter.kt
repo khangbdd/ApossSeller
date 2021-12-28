@@ -1,21 +1,19 @@
 package com.example.apossseller.utils
 
+import android.graphics.Color
 import android.net.Uri
 import android.widget.ImageView
+import android.widget.ToggleButton
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.example.apossseller.R
-import com.example.apossseller.model.HomeProduct
-import com.example.apossseller.model.Order
-import com.example.apossseller.model.OrderBillingItem
-import com.example.apossseller.model.OrderDeliveringState
-import com.example.apossseller.uicontroler.adapter.BillingItemsAdapter
-import com.example.apossseller.uicontroler.adapter.HomeProductAdapter
-import com.example.apossseller.uicontroler.adapter.OrderAdapter
-import com.example.apossseller.uicontroler.adapter.OrderDeliveringStateAdapter
+import com.example.apossseller.model.*
+import com.example.apossseller.uicontroler.adapter.*
+import me.relex.circleindicator.CircleIndicator3
 
 @BindingAdapter("image")
 fun bindImage(imageView: ImageView, image: Uri?) {
@@ -68,4 +66,38 @@ fun bindStatusIcon(imageView: ImageView, data: OrderStatus?){
 fun bindDeliveringStateRecyclerView(recyclerView: RecyclerView, data: List<OrderDeliveringState>?){
     val adapter = recyclerView.adapter as OrderDeliveringStateAdapter
     adapter.submitList(data)
+}
+@BindingAdapter( "indicatorSize")
+fun bindIndicatorSize(indicator: CircleIndicator3, size: Int){
+    indicator.createIndicators(size , 0)
+}
+@BindingAdapter("imagesData")
+fun bindDetailProductImageViewPager(viewPager2: ViewPager2, data: List<Image>?){
+    val adapter = viewPager2.adapter as DetailProductImageViewPagerAdapter
+    adapter.submitList(data)
+}
+@BindingAdapter("stringProperty")
+fun bindStringProperty(recyclerView: RecyclerView, data: List<ProductDetailProperty>?){
+    val adapter = recyclerView.adapter as StringPropertyAdapter
+    adapter.submitList(data)
+}
+@BindingAdapter("colorProperty")
+fun bindColorProperty(recyclerView: RecyclerView, data: List<ProductDetailProperty>?){
+    val adapter = recyclerView.adapter as ColorPropertyAdapter
+    adapter.submitList(data)
+}
+@BindingAdapter("stringPropertyValue")
+fun bindStringPropertyValue(recyclerView: RecyclerView, data: List<PropertyValue>?){
+    val adapter = recyclerView.adapter as StringDetailPropertyAdapter
+    adapter.submitList(data)
+}
+@BindingAdapter("colorPropertyValue")
+fun bindColorPropertyValue(recyclerView: RecyclerView, data: List<PropertyValue>?){
+    val adapter = recyclerView.adapter as ColorDetailPropertyAdapter
+    adapter.submitList(data)
+}
+@BindingAdapter("setToggleColor")
+fun bindColorToImageBackground(toggleButton: ToggleButton, data: String?){
+    val myColor: Int = Color.parseColor(data)
+    toggleButton.setBackgroundColor(myColor)
 }

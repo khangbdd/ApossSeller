@@ -116,4 +116,6 @@
     <string name="product">Product</string>
     <string name="purchased">Purchased</string>
     <string name="sort_by">Sort by:</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>

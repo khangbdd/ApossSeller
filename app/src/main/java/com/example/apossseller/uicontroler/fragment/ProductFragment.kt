@@ -31,7 +31,7 @@ class ProductFragment : Fragment(), ViewTreeObserver.OnScrollChangedListener{
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         productAdapter = HomeProductAdapter(HomeProductAdapter.OnClickListener{
-
+            findNavController().navigate(ProductFragmentDirections.actionProductFragmentToProductDetailFragment(it))
         })
         binding.imageBack.setOnClickListener {
             requireActivity().onBackPressed()

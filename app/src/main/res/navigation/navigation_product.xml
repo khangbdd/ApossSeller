@@ -9,12 +9,24 @@
         android:id="@+id/productFragment"
         android:name="com.example.apossseller.uicontroler.fragment.ProductFragment"
         android:label="fragment_product"
-        tools:layout="@layout/fragment_product" />
+        tools:layout="@layout/fragment_product" >
+        <action
+            android:id="@+id/action_productFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_productFragment_to_editProductFragment"
+            app:destination="@id/editProductFragment" />
+    </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.example.apossseller.uicontroler.fragment.ProductDetailFragment"
         android:label="fragment_product_detail"
-        tools:layout="@layout/fragment_product_detail" />
+        tools:layout="@layout/fragment_product_detail" >
+        <argument
+            android:name="id"
+            app:argType="long"
+            android:defaultValue="-1L" />
+    </fragment>
     <fragment
         android:id="@+id/editProductFragment"
         android:name="com.example.apossseller.uicontroler.fragment.EditProductFragment"

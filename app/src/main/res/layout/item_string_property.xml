@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="property"
+            type="com.example.apossseller.model.PropertyValue" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingVertical="5dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="5dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+        <ToggleButton
+            android:id="@+id/propertyValue"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:alpha="@{property.count==0? 0.5f: 1f}"
+            android:enabled="@{property.count==0? Boolean.FALSE: Boolean.TRUE}"
+            android:checked="@={property.chosen}"
+            android:text="@{property.value}"
+            android:textOn="@{property.value}"
+            android:textOff="@{property.value}"
+            android:background="@drawable/selector_string_property_value"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

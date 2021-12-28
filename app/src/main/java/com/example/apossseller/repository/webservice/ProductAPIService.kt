@@ -1,5 +1,8 @@
 package com.example.apossseller.repository.webservice
 
+import com.example.apossseller.model.ProductImageDTO
+import com.example.apossseller.model.dto.ProductDetailDTO
+import com.example.apossseller.model.dto.ProductPropertyDTO
 import com.example.apossseller.model.dto.ProductResponseDTO
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
@@ -17,29 +20,19 @@ interface ProductAPIService {
         @Query("sortDir") sortDir: String = "asc",
     ): Response<ProductResponseDTO>
 
-//    @GET("products/{id}")
-//    suspend fun getProductById(
-//        @Path(value = "id") id: Long
-//    ): Response<ProductDetailDTO>
-//
-//    @GET("products/{id}/images")
-//    suspend fun getProductImagesById(
-//        @Path(value = "id") id: Long
-//    ): Response<List<ProductImageDTO>>
-//
-//    @GET("products/kind/{id}")
-//    suspend fun getProductByKindId(
-//        @Path(value = "id") id: Long
-//    ): Response<ProductResponseDTO>
-//
-//    @GET("products/{id}/properties")
-//    suspend fun getProductPropertiesById(
-//        @Path(value = "id") id: Long,
-//        @Query("isColor") isColor: Boolean,
-//    ): Response<List<ProductPropertyDTO>>
-//
-//    @GET("products/{id}/ratings")
-//    suspend fun getProductRatingsById(
-//        @Path(value = "id") id: Long,
-//    ): Response<List<ProductRatingDTO>>
+    @GET("products/{id}")
+    suspend fun getProductById(
+        @Path(value = "id") id: Long
+    ): Response<ProductDetailDTO>
+
+    @GET("products/{id}/images")
+    suspend fun getProductImagesById(
+        @Path(value = "id") id: Long
+    ): Response<List<ProductImageDTO>>
+
+    @GET("products/{id}/properties")
+    suspend fun getProductPropertiesById(
+        @Path(value = "id") id: Long,
+        @Query("isColor") isColor: Boolean,
+    ): Response<List<ProductPropertyDTO>>
 }

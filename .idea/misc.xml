@@ -40,12 +40,25 @@
         <entry key="..\:/ApossSeller/app/src/main/res/menu/menu_order_item.xml" value="0.19427083333333334" />
         <entry key="..\:/ApossSeller/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21041666666666667" />
         <entry key="..\:/ApossSeller/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round_w.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/bg_active_button.xml" value="0.3402777777777778" />
         <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/bg_btn_filter.xml" value="0.19675925925925927" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/bg_cycle_indicator.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/bg_cycle_unselected_indicator.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/bg_detail_component.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/bg_disable_button.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/bg_property_outline.xml" value="0.3402777777777778" />
         <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/bg_search.xml" value="0.19675925925925927" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/bg_selected_property_outline.xml" value="0.3402777777777778" />
         <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/favorite_toggle_selector.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/ic_expand_less.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/ic_expand_more.xml" value="0.3402777777777778" />
         <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/ic_favorite.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/ic_out_of_stock.xml" value="0.3402777777777778" />
         <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/ic_search.xml" value="0.19675925925925927" />
         <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/ic_unfavorite.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/selector_exspand_toggle.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/selector_string_property_value.xml" value="0.3402777777777778" />
         <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/activity_order.xml" value="0.1824074074074074" />
         <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/activity_product_management_acitity.xml" value="0.22" />
@@ -57,7 +70,12 @@
         <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/fragment_product.xml" value="0.33" />
         <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/fragment_product_detail.xml" value="0.32592592592592595" />
         <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/fragment_product_general.xml" value="0.32592592592592595" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/item_color_property.xml" value="0.32592592592592595" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/item_detail_product_image_view_pager.xml" value="0.32592592592592595" />
         <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/item_product.xml" value="0.32592592592592595" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/item_product_color_property.xml" value="0.32592592592592595" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/item_product_string_property.xml" value="0.32592592592592595" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/item_string_property.xml" value="0.32592592592592595" />
       </map>
     </option>
   </component>
