@@ -6,8 +6,8 @@ import android.util.Log
 import androidx.core.net.toUri
 import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-data class Image(val imgURL: String): Parcelable{
+
+data class Image(val imgURL: String){
 
     private lateinit var imageUri: Uri;
     fun getImageUri(): Uri{

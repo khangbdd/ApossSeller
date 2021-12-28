@@ -40,11 +40,28 @@
         <entry key="..\:/ApossSeller/app/src/main/res/menu/menu_order_item.xml" value="0.19427083333333334" />
         <entry key="..\:/ApossSeller/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21041666666666667" />
         <entry key="..\:/ApossSeller/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round_w.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/bg_btn_filter.xml" value="0.19675925925925927" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/bg_search.xml" value="0.19675925925925927" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/favorite_toggle_selector.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/ic_favorite.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/ic_search.xml" value="0.19675925925925927" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/drawable/ic_unfavorite.xml" value="0.3402777777777778" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/activity_order.xml" value="0.1824074074074074" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/activity_product_management_acitity.xml" value="0.22" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/fragment_detail_order.xml" value="0.1824074074074074" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/fragment_edit_product.xml" value="0.1824074074074074" />
         <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/fragment_order.xml" value="0.32592592592592595" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/fragment_order_general.xml" value="0.32592592592592595" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/fragment_product.xml" value="0.33" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/fragment_product_detail.xml" value="0.32592592592592595" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/fragment_product_general.xml" value="0.32592592592592595" />
+        <entry key="..\:/Users/Lenovo/OneDrive/Documents/GitHub/ApossSeller/app/src/main/res/layout/item_product.xml" value="0.32592592592592595" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

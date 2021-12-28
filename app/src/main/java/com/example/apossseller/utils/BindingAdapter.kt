@@ -8,10 +8,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.example.apossseller.R
+import com.example.apossseller.model.HomeProduct
 import com.example.apossseller.model.Order
 import com.example.apossseller.model.OrderBillingItem
 import com.example.apossseller.model.OrderDeliveringState
 import com.example.apossseller.uicontroler.adapter.BillingItemsAdapter
+import com.example.apossseller.uicontroler.adapter.HomeProductAdapter
 import com.example.apossseller.uicontroler.adapter.OrderAdapter
 import com.example.apossseller.uicontroler.adapter.OrderDeliveringStateAdapter
 
@@ -25,20 +27,6 @@ fun bindImage(imageView: ImageView, image: Uri?) {
         .into(imageView)
     imageView.scaleType = ImageView.ScaleType.CENTER_CROP
 }
-@BindingAdapter("imagesPath")
-fun bindImagePath(imageView: ImageView, image: Uri?)
-{
-    Glide.with(imageView.context)
-        .asBitmap()
-        .load(image)
-        .apply(
-            RequestOptions().placeholder(R.drawable.animation_loading)
-        )
-//        .error(RequestOptions().placeholder(R.drawable.ic_baseline_error_24))
-        .transition(BitmapTransitionOptions.withCrossFade())
-        .into(imageView)
-    imageView.scaleType= ImageView.ScaleType.CENTER_CROP
-}
 @BindingAdapter("billingItemData")
 fun bindBillingItemRecyclerView(recyclerView: RecyclerView, data: List<OrderBillingItem>?){
     val adapter = recyclerView.adapter as BillingItemsAdapter
@@ -47,6 +35,11 @@ fun bindBillingItemRecyclerView(recyclerView: RecyclerView, data: List<OrderBill
 @BindingAdapter ("orderData")
 fun bindOrderRecyclerView(recyclerView: RecyclerView, data: List<Order>?){
     val adapter = recyclerView.adapter as OrderAdapter
+    adapter.submitList(data)
+}
+@BindingAdapter("productData")
+fun bindProductRecyclerView(recyclerView: RecyclerView, data: List<HomeProduct>?){
+    val adapter = recyclerView.adapter as HomeProductAdapter
     adapter.submitList(data)
 }
 @BindingAdapter("statusIconData")

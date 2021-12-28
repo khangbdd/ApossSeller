@@ -16,6 +16,9 @@
         android:theme="@style/Theme.ApossSeller"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".uicontroler.activity.ProductManagementAcitity"
+            android:exported="false" />
+        <activity
             android:name=".uicontroler.activity.OrderActivity"
             android:exported="true" />
         <activity

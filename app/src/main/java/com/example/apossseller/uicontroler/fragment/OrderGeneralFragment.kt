@@ -30,7 +30,6 @@ class OrderGeneralFragment : Fragment() {
         binding.lnManageOrder.setOnClickListener {
             val intent = Intent(this.context, OrderActivity::class.java)
             startActivity(intent)
-            requireActivity().finish()
         }
         return binding.root
     }
